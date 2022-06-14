@@ -3,3 +3,8 @@
     cupiditate
     eligendi aliquam molestiae commodi, sunt alias.
 </p>
+
+<div *ngFor="let image of arrObjImagenes" class="">
+    <h4>{{image.title}}</h4>
+    <img src="{{image.images.fixed_height_still.url}}" class="rounded" alt="...">
+</div>

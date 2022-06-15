@@ -1,19 +1,21 @@
 <h5>Buscar Gif</h5>
 
-
-
-
 <div class="input-group mb-3">
-
-    <input type="text" name="" id="" class="form-control" placeholder="Ejemplo: One Piece..." (keyup.enter)="buscar( )"
-        #inputBuscar>
-    <!-- <input type="text" name="" id="" class="form-control" placeholder="Ejemplo: Goku..."
+  <input
+    type="text"
+    name=""
+    id=""
+    class="form-control"
+    placeholder="Ejemplo: One Piece..."
+    (keyup.enter)="buscar()"
+    #inputBuscar
+  />
+  <!-- <input type="text" name="" id="" class="form-control" placeholder="Ejemplo: Goku..."
         (keyup.enter)="buscar(inputBuscar.value)" #inputBuscar> -->
-    <!-- #referencias es como un documento.querySelecto() del lado del DOM -->
+  <!-- #referencias es como un documento.querySelecto() del lado del DOM -->
 
-    <span class="input-group-text btn btn-dark" (click)="buscar()">
-        <i class="bi bi-search"></i>
-        Buscar
-    </span>
-
+  <span class="input-group-text btn btn-dark" (click)="buscar()">
+    <i class="bi bi-search"></i>
+    Buscar
+  </span>
 </div>

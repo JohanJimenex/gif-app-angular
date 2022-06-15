@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GifsService } from '../services/gifs.service';
+import { IGif } from '../interfaces/gifs.interface';
 
 @Component({
   selector: 'app-resultados',
@@ -9,8 +10,7 @@ export class ResultadosComponent {
 
   constructor(private GifsService: GifsService) { }
 
-
-  get arrObjImagenes(): any[] {
+  get arrObjImagenes(): IGif[] {
     return this.GifsService.arrObjImagenes;
   }
 

@@ -1,18 +1,21 @@
 <div class="row">
-  <!-- <div class="text-center">
-    <img src="../../../assets/img/not_result_img.jpg" class="rounded not-result">
-  </div> -->
 
-  <div *ngFor="let image of arrObjImagenes" class="col-md-4 col-sm-6 animate__animated animate__backInDown">
-    <div class="card m-1">
+
+  <div *ngIf="arrObjImagenes.length == 0" class="text-center">
+    <img src="../../../assets/img/not_result_img.png" class="rounded not-result animate__animated animate__rubberBand">
+  </div>
+
+  <div *ngFor="let image of arrObjImagenes" class="col-md-3 col-sm-6 animate__animated animate__backInDown">
+    <div class="card mb-1">
       <div class="card-body">
         <!-- <img src="{{ image.images.downsized_medium.url }}" class="card-img-top rounded" /> -->
         <img [src]="image.images.downsized_medium.url" class="card-img-top rounded" />
-        <p class="card-text">
+        <p class="card-text text-center">
           {{ image.title }}
         </p>
       </div>
     </div>
   </div>
+
 
 </div>

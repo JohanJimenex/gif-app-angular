@@ -16,7 +16,7 @@ body {
 
 .not-result {
     /* width: 700px; */
-    height:350px;
+    height: 350px;
 
     /* object-fit: cover; */
 }
@@ -27,3 +27,14 @@ body {
     height: 200px;
     object-fit: cover;
 } */
+
+p {
+    font-size: 1.0rem !important;
+}
+
+
+@media (min-width: 900px) {
+    p {
+        font-size: 1.5rem;
+    }
+}

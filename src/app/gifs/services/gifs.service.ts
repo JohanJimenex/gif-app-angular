@@ -44,6 +44,7 @@ export class GifsService {
     this.http.get<IObjtResponse>(this.urlBase, { params })
       .subscribe((resp: IObjtResponse) => {
         this.arrObjImagenes = resp.data;
+
       })
 
 

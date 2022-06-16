@@ -16,4 +16,15 @@
 
     </div>
 
+    <div class="text-center mt-3">
+        <button
+        *ngIf="arrHistorialBusqueda.length > 0"
+        class="btn btn-danger"
+        onclick='swal("Listo!", "El historial ha sido eliminado", "success");'
+        (click)="eliminarHistorial()"
+        >Eliminar historial
+        </button>
+    </div>
+
+
 </div>

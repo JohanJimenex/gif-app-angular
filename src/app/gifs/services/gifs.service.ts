@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { IGif, IObjtResponse } from '../interfaces/gifs.interface';
+
+
 
 
 @Injectable({
@@ -18,12 +20,13 @@ export class GifsService {
 
   get arrHistorialBusqueda(): string[] {
     return [...this._arrHistorialBusqueda];
+
   }
 
   constructor(private http: HttpClient) {
-
     this._arrHistorialBusqueda = JSON.parse(localStorage.getItem("arrHistorialBusqueda") || "[]");
     this.buscarGif(localStorage.getItem('ultimaBusqueda') || "");
+
   }
 
   buscarGif(query: string): void {
@@ -32,9 +35,13 @@ export class GifsService {
 
     localStorage.setItem("ultimaBusqueda", query);
 
+    const params = new HttpParams()
+      .set("api_key", this.apiKey)
+      .set("q", query)
+      .set("limit", "20");
 
     //con <IObjtResponse> indicamos que el objeto que vamos a recibir tiene esa estructura de la interface 
-    this.http.get<IObjtResponse>(`${this.urlBase}?api_key=${this.apiKey}&q=${query}&limit=20`)
+    this.http.get<IObjtResponse>(this.urlBase, { params })
       .subscribe((resp: IObjtResponse) => {
         this.arrObjImagenes = resp.data;
       })
@@ -49,7 +56,12 @@ export class GifsService {
 
     //guardar data en el localstore, JSON.stringify() convierte un objeto/arreglo a string
     localStorage.setItem("arrHistorialBusqueda", JSON.stringify(this._arrHistorialBusqueda))
+  }
 
+
+  eliminarHistorial(): void {
+    localStorage.clear()
+    this._arrHistorialBusqueda = [];
   }
 
 }

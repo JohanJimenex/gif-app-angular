@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { IGif, IObjtResponse } from '../interfaces/gifs.interface';
 
 
@@ -42,7 +43,7 @@ export class GifsService {
 
     //con <IObjtResponse> indicamos que el objeto que vamos a recibir tiene esa estructura de la interface 
     this.http.get<IObjtResponse>(this.urlBase, { params })
-      .subscribe((resp: IObjtResponse) => {
+      .subscribe((resp: IObjtResponse) => { //.subscribe es como .them promesa
         this.arrObjImagenes = resp.data;
 
       })

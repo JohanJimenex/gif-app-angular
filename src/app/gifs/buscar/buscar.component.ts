@@ -13,8 +13,8 @@ export class BuscarComponent {
 
   //Este decorador es como documento.querySelector()
   //tambien se pueden seleccionar elementos como un div, h1, etc
-  /* ! Operador para permitir que la variable acepte null (non null asertion operator)
-  permite que la variable pueda vernir nula (null)*/
+  /* ! Operador para permitir que la variable acepte null (non null asertion operator)*/
+ 
   @ViewChild('inputBuscar') inputBuscar!: ElementRef<HTMLInputElement>;
   //Se le agrega el tipo <T> HTMLInputElement para que VSC muestre todos sus metodos
 
@@ -26,7 +26,6 @@ export class BuscarComponent {
     this.inputBuscar.nativeElement.value = "";
 
     this.inputBuscar.nativeElement.focus();
-
   }
 
 }

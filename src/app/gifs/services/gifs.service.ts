@@ -25,12 +25,14 @@ export class GifsService {
   }
 
   constructor(private http: HttpClient) {
+    //el consrtructor lo usamos para iniciarlizar variables
     this._arrHistorialBusqueda = JSON.parse(localStorage.getItem("arrHistorialBusqueda") || "[]");
     this.buscarGif(localStorage.getItem('ultimaBusqueda') || "");
-
+    this.buscarGifConFetch("one");
   }
 
   buscarGif(query: string): void {
+
 
     query = query.trim().toLowerCase();
 
@@ -40,6 +42,7 @@ export class GifsService {
       .set("api_key", this.apiKey)
       .set("q", query)
       .set("limit", "20");
+
 
     //con <IObjtResponse> indicamos que el objeto que vamos a recibir tiene esa estructura de la interface 
     this.http.get<IObjtResponse>(this.urlBase, { params })
@@ -58,6 +61,15 @@ export class GifsService {
 
     //guardar data en el localstore, JSON.stringify() convierte un objeto/arreglo a string
     localStorage.setItem("arrHistorialBusqueda", JSON.stringify(this._arrHistorialBusqueda))
+  }
+
+  async buscarGifConFetch(query: string) {
+
+    let resp = await fetch(`${this.urlBase}?api_key=${this.apiKey}&q=${query}&limit=20}`);
+    let dataJsonObj = await resp.json();
+    console.log("Peticion con fetch!");
+    console.log(dataJsonObj.data);
+
   }
 
 
